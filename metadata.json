@@ -1,0 +1,5 @@
+{
+  "name": "TestMind AI",
+  "description": "AI-powered test case generator for QA engineers. Transform product requirements into structured test cases, edge cases, and risk analysis.",
+  "requestFramePermissions": []
+}
