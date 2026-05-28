@@ -35,6 +35,7 @@ import {
 import { generateTestCases, generatePrompt, auditRequirement } from './services/geminiService';
 import { TestGenerationResult, TestCase, Priority, HistoryItem, AuditResult } from './types';
 import { RequirementAuditor } from './components/RequirementAuditor';
+import WaitlistForm from './components/WaitlistForm';
 
 const COLORS = ['#6366f1', '#f59e0b', '#10b981', '#f43f5e', '#8b5cf6', '#06b6d4'];
 const HISTORY_RETENTION_DAYS = 30;
@@ -469,22 +470,31 @@ export default function App() {
       <main className="max-w-5xl mx-auto px-4 py-16">
         {/* Hero Section */}
         <div className="text-center mb-16">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-5xl font-black text-black mb-6 tracking-tighter uppercase sm:text-7xl"
           >
-            Generate Test Cases <br/><span className="text-indigo-600">In Seconds</span>
+            Your <span className="text-indigo-600">AI QA Engineer</span>
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
             className="text-xl text-slate-600 max-w-2xl mx-auto font-medium"
           >
-            Paste your product requirements and let our AI engine create structured test cases, identify edge cases, and analyze risks.
+            Describe a flow, we test it. Plain-English bug report in 60 seconds. No setup. No code. No QA team required.
           </motion.p>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15 }}
+          className="mb-12"
+        >
+          <WaitlistForm />
+        </motion.div>
 
         {/* Input Card */}
         <motion.div 
@@ -501,7 +511,7 @@ export default function App() {
               id="requirement"
               rows={6}
               className="w-full p-6 border-3 border-black shadow-neubrutal focus:ring-0 focus:border-black transition-all resize-none bg-white text-lg font-medium placeholder:text-slate-400"
-              placeholder="As a user I should be able to reset my password using email verification..."
+              placeholder="e.g. Test the login flow at https://myapp.com — what breaks?"
               value={requirement}
               onChange={(e) => setRequirement(e.target.value)}
             />
@@ -568,7 +578,7 @@ export default function App() {
                     ) : (
                       <Play className="w-5 h-5 fill-current" />
                     )}
-                    Generate
+                    Analyse my app
                   </>
                 )}
               </button>
