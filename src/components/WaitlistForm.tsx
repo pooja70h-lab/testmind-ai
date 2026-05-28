@@ -10,6 +10,7 @@ export default function WaitlistForm() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    console.log('SUPABASE URL:', import.meta.env.VITE_SUPABASE_URL, 'KEY exists:', !!import.meta.env.VITE_SUPABASE_ANON_KEY);
     if (!email.trim()) return;
 
     setStatus('loading');
